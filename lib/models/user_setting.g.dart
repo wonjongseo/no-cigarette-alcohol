@@ -18,24 +18,33 @@ class UserSettingAdapter extends TypeAdapter<UserSetting> {
     };
     return UserSetting(
       startDate: fields[0] as DateTime,
-      cigDaily: fields[1] as double,
-      drinkDaily: fields[2] as double,
-      currency: fields[3] as String,
+      cigPrice: fields[1] as double,
+      alcPrice: fields[2] as double,
+      cigCurrency: fields[3] as String,
+      alcCurrency: fields[4] as String,
+      alcDay: fields[5] as int,
+      cigDay: fields[6] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, UserSetting obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.startDate)
       ..writeByte(1)
-      ..write(obj.cigDaily)
+      ..write(obj.cigPrice)
       ..writeByte(2)
-      ..write(obj.drinkDaily)
+      ..write(obj.alcPrice)
       ..writeByte(3)
-      ..write(obj.currency);
+      ..write(obj.cigCurrency)
+      ..writeByte(4)
+      ..write(obj.alcCurrency)
+      ..writeByte(5)
+      ..write(obj.alcDay)
+      ..writeByte(6)
+      ..write(obj.cigDay);
   }
 
   @override
